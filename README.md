@@ -13,6 +13,9 @@ npm start
 # curl --json defaults to the POST method
 curl -v --json '{"name":"Hello"}' http://localhost:8000/customer
 
+# within stackblitz open a new terminal and try this instead
+curl -v -X POST --header "Content-Type: application/json" --data '{"name":"Hello"}' http://localhost:8000/customer
+
 ```
 ### Retrieve
 
@@ -28,6 +31,9 @@ curl http://localhost:8000/customer/1
 
 ```shell
 curl -v -X PUT --json '{"name":"Hello1"}' http://localhost:8000/customer/1
+
+# within stackblitz try this instead
+curl -v -X PUT --header "Content-Type: application/json" --data '{"name":"Hello1"}' http://localhost:8000/customer/1
 
 ```
 
