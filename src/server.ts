@@ -3,12 +3,21 @@ import types = require("sequelize");
 
 const express = require('express');
 const { Sequelize } = require('sequelize');
+// const morgan = require("morgan");
 
 const app: e.Application = express();
 const port = 8000;
 
 // install JSON middleware
 app.use(express.json())
+
+// install logging middleware
+app.use((req,res,next)=>{
+    next();
+    console.log(`${req.ip} "${req.method} ${req.originalUrl} HTTP/${req.httpVersion}" ${res.statusCode}`);
+});
+// using morgan logging middleware
+// app.use(morgan('dev'));
 
 // instantiate ORM
 const sequelize = new Sequelize('sqlite:rest.db');
